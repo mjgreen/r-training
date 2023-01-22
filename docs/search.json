@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "R Training",
+    "section": "",
+    "text": "About\nThis is training in R, for the winter 2023 cohort.\nLast compiled Sunday 22 January 2023 at 22:28:59"
+  },
+  {
+    "objectID": "index.html#thomas",
+    "href": "index.html#thomas",
+    "title": "R Training",
+    "section": "Thomas:",
+    "text": "Thomas:\n\neye movements in reading: modify supplied code at:\n\ngithub R code for analysing scanpaths in reading\n\nMarkdown:\n\nhttps://psyteachr.github.io/data-skills-v1/ref1.html#activity-3-open-and-save-a-new-r-markdown-document\n\nWrangling:\n\nGlasgow Data Skills book, wrangling section"
+  },
+  {
+    "objectID": "index.html#irem",
+    "href": "index.html#irem",
+    "title": "R Training",
+    "section": "Irem",
+    "text": "Irem\n\nVarious options:\n\nStart with IntroDataViz\n\nhttps://psyteachr.github.io/introdataviz/index.html\n\nStart with Rmarkdown\n\nhttps://psyteachr.github.io/data-skills-v1/ref1.html#activity-3-open-and-save-a-new-r-markdown-document\n\nOr continue Glasgow ADS course from sample() if you want continuity with last time:\n\nhttps://psyteachr.github.io/ads-v2/01-intro.html#arguments"
+  },
+  {
+    "objectID": "index.html#tuba",
+    "href": "index.html#tuba",
+    "title": "R Training",
+    "section": "Tuba",
+    "text": "Tuba\n\nStart with IntroDataViz\n\nhttps://psyteachr.github.io/introdataviz/index.html"
+  },
+  {
+    "objectID": "index.html#inga",
+    "href": "index.html#inga",
+    "title": "R Training",
+    "section": "Inga",
+    "text": "Inga\n\nsome experience with python & matlab\nStart with IntroDataViz but if it’s too simple, try Hadley Wickham’s book\n\nIntroDataViz\nHadley Wickham’s book"
+  }
+]
