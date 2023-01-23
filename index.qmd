@@ -51,3 +51,4 @@ Last compiled `r format(Sys.time(), '%A %d %B %Y at %X')`
 * Start with IntroDataViz but if it's too simple, try Hadley Wickham's book
   * [IntroDataViz](https://psyteachr.github.io/introdataviz/index.html)
   * Hadley Wickham's [book](https://r4ds.had.co.nz/) 
+  
