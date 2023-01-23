@@ -12,7 +12,7 @@ Last compiled `r format(Sys.time(), '%A %d %B %Y at %X')`
 # Resources
 * **Glasgow data analysis books**: [PsyTeachR](https://psyteachr.github.io/)
   * If you don't have experience with other programming languages, start with their introduction to data visualisation, even if data visualisation is not your main goal.
-  * An interactive web tutorial is [here](https://psyteachr.github.io/introdataviz/index.html)
+    * An interactive web tutorial is [here](https://psyteachr.github.io/introdataviz/index.html)
     * A published paper is [here](https://osf.io/download/5e64r/)
     * Data and code can be downloaded [here](https://osf.io/bj83f/)
   * More detailed treatments of the R language, Rmarkdown, and data wrangling can be found in other books that are part of PsyTeachR. Look through the chapter listings of the following 2 books - the first is a shorter treatment:
