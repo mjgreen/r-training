@@ -10,6 +10,7 @@ book:
 
   chapters:
     - index.qmd
+    - exercises.qmd
 
 format:
   html:

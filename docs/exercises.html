@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Matt Green">
 
-<title>R Training</title>
+<title>R Training - Exercises</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./exercises.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -72,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">R Training</h1>
+      <h1 class="quarto-secondary-nav-title">Exercises</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -100,12 +99,12 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">About</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">About</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercises.html" class="sidebar-item-text sidebar-link">Exercises</a>
+  <a href="./exercises.html" class="sidebar-item-text sidebar-link active">Exercises</a>
   </div>
 </li>
     </ul>
@@ -117,15 +116,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About</a></li>
-  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
-  <li><a href="#topics-for-individuals" id="toc-topics-for-individuals" class="nav-link" data-scroll-target="#topics-for-individuals">Topics for individuals</a>
-  <ul class="collapse">
-  <li><a href="#thomas" id="toc-thomas" class="nav-link" data-scroll-target="#thomas">Thomas:</a></li>
-  <li><a href="#irem" id="toc-irem" class="nav-link" data-scroll-target="#irem">Irem</a></li>
-  <li><a href="#tuba" id="toc-tuba" class="nav-link" data-scroll-target="#tuba">Tuba</a></li>
-  <li><a href="#inga" id="toc-inga" class="nav-link" data-scroll-target="#inga">Inga</a></li>
-  </ul></li>
+  <li><a href="#read-in-data" id="toc-read-in-data" class="nav-link active" data-scroll-target="#read-in-data">Read in data</a></li>
   </ul>
 </nav>
     </div>
@@ -134,19 +125,13 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">R Training</h1>
+<h1 class="title d-none d-lg-block">Exercises</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Matt Green </p>
-          </div>
-  </div>
     
   
     
@@ -155,133 +140,12 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="about" class="level1 unnumbered">
-<h1 class="unnumbered">About</h1>
-<p>This is training in R, for the winter 2023 cohort.<br>
-Last compiled Tuesday 24 January 2023 at 22:12:11</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">Tuba</th>
-<th style="text-align: center;">Irem</th>
-<th style="text-align: center;">Inga</th>
-<th style="text-align: center;">Thomas</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Monday</td>
-<td style="text-align: center;">y</td>
-<td style="text-align: center;">y</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">y</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Tuesday</td>
-<td style="text-align: center;">y</td>
-<td style="text-align: center;">y</td>
-<td style="text-align: center;">y</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Wednesday</td>
-<td style="text-align: center;">y</td>
-<td style="text-align: center;">y</td>
-<td style="text-align: center;">y</td>
-<td style="text-align: center;">y</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="resources" class="level1">
-<h1>Resources</h1>
-<ul>
-<li><strong>Glasgow data analysis books</strong>: <a href="https://psyteachr.github.io/">PsyTeachR</a>
-<ul>
-<li>If you don’t have experience with other programming languages, start with their introduction to data visualisation, even if data visualisation is not your main goal.
-<ul>
-<li>An interactive web tutorial is <a href="https://psyteachr.github.io/introdataviz/index.html">here</a></li>
-<li>A published paper is <a href="https://osf.io/download/5e64r/">here</a></li>
-<li>Data and code can be downloaded <a href="https://osf.io/bj83f/">here</a></li>
-</ul></li>
-<li>More detailed treatments of the R language, Rmarkdown, and data wrangling can be found in other books that are part of PsyTeachR. Look through the chapter listings of the following 2 books - the first is a shorter treatment:
-<ul>
-<li>‘Data Skills’ <a href="https://psyteachr.github.io/data-skills-v1/">here</a></li>
-<li>‘Applied Data Skills’ <a href="https://psyteachr.github.io/ads-v2/">here</a></li>
-</ul></li>
-</ul></li>
-<li><strong>Hadley Wickham’s R For Data Science book</strong>
-<ul>
-<li>If you have experience with other languages, and if you can make sense of the Introduction to Data Visualisation above, then you might get most out of following this approach. This is a definitive guide to data wrangling, written by the same people who wrote the code itself.
-<ul>
-<li>The textbook is online <a href="https://r4ds.had.co.nz/">here</a></li>
-<li>Solutions to the exercises in the book are <a href="https://jrnold.github.io/r4ds-exercise-solutions/">here</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="topics-for-individuals" class="level1">
-<h1>Topics for individuals</h1>
-<section id="thomas" class="level2">
-<h2 class="anchored" data-anchor-id="thomas">Thomas:</h2>
-<ul>
-<li>eye movements in reading: modify supplied code at:
-<ul>
-<li><a href="https://github.com/tmalsburg/scanpath">github R code for analysing scanpaths in reading</a></li>
-</ul></li>
-<li>Markdown:
-<ul>
-<li><a href="https://psyteachr.github.io/data-skills-v1/ref1.html#activity-3-open-and-save-a-new-r-markdown-document">https://psyteachr.github.io/data-skills-v1/ref1.html#activity-3-open-and-save-a-new-r-markdown-document</a></li>
-</ul></li>
-<li>Wrangling:
-<ul>
-<li><a href="https://psyteachr.github.io/data-skills-v1/data-wrangling-1.html">Glasgow Data Skills book, wrangling section</a></li>
-</ul></li>
-</ul>
-</section>
-<section id="irem" class="level2">
-<h2 class="anchored" data-anchor-id="irem">Irem</h2>
-<ul>
-<li>Various options:
-<ul>
-<li>Start with IntroDataViz
-<ul>
-<li><a href="https://psyteachr.github.io/introdataviz/index.html">https://psyteachr.github.io/introdataviz/index.html</a></li>
-</ul></li>
-<li>Start with Rmarkdown
-<ul>
-<li><a href="https://psyteachr.github.io/data-skills-v1/ref1.html#activity-3-open-and-save-a-new-r-markdown-document">https://psyteachr.github.io/data-skills-v1/ref1.html#activity-3-open-and-save-a-new-r-markdown-document</a></li>
-</ul></li>
-<li>Or continue Glasgow ADS course from <code>sample()</code> if you want continuity with last time:
-<ul>
-<li><a href="https://psyteachr.github.io/ads-v2/01-intro.html#arguments">https://psyteachr.github.io/ads-v2/01-intro.html#arguments</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="tuba" class="level2">
-<h2 class="anchored" data-anchor-id="tuba">Tuba</h2>
-<ul>
-<li>Start with IntroDataViz
-<ul>
-<li><a href="https://psyteachr.github.io/introdataviz/index.html">https://psyteachr.github.io/introdataviz/index.html</a></li>
-</ul></li>
-</ul>
-</section>
-<section id="inga" class="level2">
-<h2 class="anchored" data-anchor-id="inga">Inga</h2>
-<ul>
-<li>some experience with python &amp; matlab</li>
-<li>Start with IntroDataViz but if it’s too simple, try Hadley Wickham’s book
-<ul>
-<li><a href="https://psyteachr.github.io/introdataviz/index.html">IntroDataViz</a></li>
-<li>Hadley Wickham’s <a href="https://r4ds.had.co.nz/">book</a></li>
-</ul></li>
-</ul>
+<p>In this section we do some exercises to practice. Each exercise has a solution that is hidden to start with: you can click on the <code>show the answer</code> button to reveal the solution, but I recommend that you try to solve each exercise yourself before looking at the solution. In each exercise I give some hints and some references to material in Hadley Wickham’s book – reading this material should help you identify, and understand, functions that you need to solve the exercise.</p>
+<section id="read-in-data" class="level2">
+<h2 class="anchored" data-anchor-id="read-in-data">Read in data</h2>
+<p>Right-click <a href="docs/ldt_data.csv">this link</a> and <code>save as</code> to get the data</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -535,11 +399,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">About</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./exercises.html" class="pagination-link">
-        <span class="nav-page-text">Exercises</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

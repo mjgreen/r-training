@@ -1,0 +1,7 @@
+# Exercises {.unnumbered}
+
+In this section we do some exercises to practice. Each exercise has a solution that is hidden to start with: you can click on the `show the answer` button to reveal the solution, but I recommend that you try to solve each exercise yourself before looking at the solution. In each exercise I give some hints and some references to material in Hadley Wickham's book -- reading this material should help you identify, and understand, functions that you need to solve the exercise.
+
+## Read in data
+
+Right-click [this link](docs/ldt_data.csv) and `save as` to get the data
