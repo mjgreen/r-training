@@ -4,4 +4,4 @@ In this section we do some exercises to practice. Each exercise has a solution t
 
 ## Read in data
 
-Right-click [this link](docs/ldt_data.csv) and `save as` to get the data
+Use the following link to download the data as a spreadsheet: [ldt_data.csv](docs/ldt_data.csv)

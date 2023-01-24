@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "R Training",
     "section": "",
-    "text": "About\nThis is training in R, for the winter 2023 cohort.\nLast compiled Tuesday 24 January 2023 at 22:17:39"
+    "text": "About\nThis is training in R, for the winter 2023 cohort.\nLast compiled Tuesday 24 January 2023 at 22:20:03"
   },
   {
     "objectID": "index.html#thomas",
@@ -39,6 +39,6 @@
     "href": "exercises.html#read-in-data",
     "title": "Exercises",
     "section": "Read in data",
-    "text": "Read in data\nRight-click this link and save as to get the data"
+    "text": "Read in data\nUse the following link to download the data as a spreadsheet: ldt_data.csv"
   }
 ]
