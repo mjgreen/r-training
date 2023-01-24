@@ -1,7 +1,19 @@
 # Exercises {.unnumbered}
 
-In this section we do some exercises to practice. Each exercise has a solution that is hidden to start with: you can click on the `show the answer` button to reveal the solution, but I recommend that you try to solve each exercise yourself before looking at the solution. In each exercise I give some hints and some references to material in Hadley Wickham's book -- reading this material should help you identify, and understand, functions that you need to solve the exercise.
+In this section we do some exercises to practice. Each exercise has a solution that is hidden to start with: you can click on the `Show me how` button to reveal the solution, but I recommend that you try to solve each exercise yourself before looking at the solution. In each exercise I give some hints and some references to material in Hadley Wickham's book -- reading this material should help you identify, and understand, functions that you need to solve the exercise.
+
+## Start a new Rproject
+
+Whenever you start a piece of work in R, make a folder specially for that piece of work, and start an Rproject in that folder.
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show me how"
+# In the top-right where it says "Project: (None)" use the dropdown to do "New Project", and follow the prompts
+```
+
 
 ## Read in data
 
-Use the following link to download the data as a spreadsheet: [ldt_data.csv](docs/ldt_data.csv)
+Use the following link to download the data as a spreadsheet: [ldt_data.csv](docs/ldt_data.csv). Then move the spreadsheet into your project folder so R can see it.
+

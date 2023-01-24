@@ -39,6 +39,13 @@
     "href": "exercises.html#read-in-data",
     "title": "Exercises",
     "section": "Read in data",
-    "text": "Read in data\nUse the following link to download the data as a spreadsheet: ldt_data.csv"
+    "text": "Read in data\nUse the following link to download the data as a spreadsheet: ldt_data.csv. Then move the spreadsheet into your project folder so R can see it."
+  },
+  {
+    "objectID": "exercises.html#start-a-new-rproject",
+    "href": "exercises.html#start-a-new-rproject",
+    "title": "Exercises",
+    "section": "Start a new Rproject",
+    "text": "Start a new Rproject\nWhenever you start a piece of work in R, make a folder specially for that piece of work, and start an Rproject in that folder.\n\n\nShow me how\n# In the top-right where it says \"Project: (None)\" use the dropdown to do \"New Project\", and follow the prompts"
   }
 ]
