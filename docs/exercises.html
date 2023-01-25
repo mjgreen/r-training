@@ -593,12 +593,15 @@ Show me how
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"RT"</span></span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># check that it worked</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's make condition be a factor</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>condition <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(dat<span class="sc">$</span>condition)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># check that it worked</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 200 × 5
    id      age language    condition    RT
-   &lt;chr&gt; &lt;dbl&gt; &lt;fct&gt;       &lt;chr&gt;     &lt;dbl&gt;
+   &lt;chr&gt; &lt;dbl&gt; &lt;fct&gt;       &lt;fct&gt;     &lt;dbl&gt;
  1 S001     22 monolingual word       379.
  2 S001     22 monolingual nonword    517.
  3 S002     33 monolingual word       312.
@@ -659,13 +662,13 @@ Show me how
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># check the new maximum for RT</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      id                 age               language    condition        
- Length:180         Min.   :18.00   monolingual:110   Length:180        
- Class :character   1st Qu.:24.00   bilingual  : 70   Class :character  
- Mode  :character   Median :28.00                     Mode  :character  
-                    Mean   :29.29                                       
-                    3rd Qu.:33.00                                       
-                    Max.   :58.00                                       
+<pre><code>      id                 age               language     condition  
+ Length:180         Min.   :18.00   monolingual:110   word   :100  
+ Class :character   1st Qu.:24.00   bilingual  : 70   nonword: 80  
+ Mode  :character   Median :28.00                                  
+                    Mean   :29.29                                  
+                    3rd Qu.:33.00                                  
+                    Max.   :58.00                                  
        RT       
  Min.   :256.3  
  1st Qu.:346.4  
@@ -749,23 +752,23 @@ Show me how
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">monolingual</td>
-<td style="text-align: left;">nonword</td>
-<td style="text-align: right;">447.7275</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">monolingual</td>
 <td style="text-align: left;">word</td>
 <td style="text-align: right;">358.1143</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">bilingual</td>
-<td style="text-align: left;">nonword</td>
-<td style="text-align: right;">561.1946</td>
-</tr>
 <tr class="even">
+<td style="text-align: left;">monolingual</td>
+<td style="text-align: left;">nonword</td>
+<td style="text-align: right;">447.7275</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">bilingual</td>
 <td style="text-align: left;">word</td>
 <td style="text-align: right;">348.1346</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bilingual</td>
+<td style="text-align: left;">nonword</td>
+<td style="text-align: right;">561.1946</td>
 </tr>
 </tbody>
 </table>
@@ -804,20 +807,17 @@ Show me how
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(language, condition) <span class="sc">%&gt;%</span> </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">meanRT =</span> <span class="fu">mean</span>(RT))</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's make condition be a factor</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>condition <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(dat<span class="sc">$</span>condition)</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># check that it worked</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># check that it worked</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
 # Groups:   language [2]
   language    condition meanRT
   &lt;fct&gt;       &lt;fct&gt;      &lt;dbl&gt;
-1 monolingual nonword     448.
-2 monolingual word        358.
-3 bilingual   nonword     561.
-4 bilingual   word        348.</code></pre>
+1 monolingual word        358.
+2 monolingual nonword     448.
+3 bilingual   word        348.
+4 bilingual   nonword     561.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -832,23 +832,23 @@ Show me how
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">monolingual</td>
-<td style="text-align: left;">nonword</td>
-<td style="text-align: right;">447.7275</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">monolingual</td>
 <td style="text-align: left;">word</td>
 <td style="text-align: right;">358.1143</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">bilingual</td>
-<td style="text-align: left;">nonword</td>
-<td style="text-align: right;">561.1946</td>
-</tr>
 <tr class="even">
+<td style="text-align: left;">monolingual</td>
+<td style="text-align: left;">nonword</td>
+<td style="text-align: right;">447.7275</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">bilingual</td>
 <td style="text-align: left;">word</td>
 <td style="text-align: right;">348.1346</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bilingual</td>
+<td style="text-align: left;">nonword</td>
+<td style="text-align: right;">561.1946</td>
 </tr>
 </tbody>
 </table>

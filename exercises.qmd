@@ -176,6 +176,9 @@ dat <- dat %>%
     values_to = "RT"
   )
 
+# Let's make condition be a factor
+dat$condition <- as_factor(dat$condition)
+
 # check that it worked
 dat
 ```
@@ -270,9 +273,6 @@ knitr::kable(foo)
 dat <- dat %>% 
   group_by(language, condition) %>% 
   summarise(meanRT = mean(RT))
-
-# Let's make condition be a factor
-dat$condition <- as_factor(dat$condition)
 
 # check that it worked
 dat
