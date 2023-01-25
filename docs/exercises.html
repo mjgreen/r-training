@@ -180,7 +180,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#start-a-new-rproject" id="toc-start-a-new-rproject" class="nav-link active" data-scroll-target="#start-a-new-rproject">Start a new Rproject</a></li>
-  <li><a href="#read-in-data" id="toc-read-in-data" class="nav-link" data-scroll-target="#read-in-data">Read in data</a></li>
+  <li><a href="#download-the-data-as-a-spreadsheet" id="toc-download-the-data-as-a-spreadsheet" class="nav-link" data-scroll-target="#download-the-data-as-a-spreadsheet">Download the data as a spreadsheet</a></li>
+  <li><a href="#make-sure-you-have-the-tidyverse-loaded." id="toc-make-sure-you-have-the-tidyverse-loaded." class="nav-link" data-scroll-target="#make-sure-you-have-the-tidyverse-loaded.">Make sure you have the <code>tidyverse</code> loaded.</a></li>
+  <li><a href="#read-the-data-into-r" id="toc-read-the-data-into-r" class="nav-link" data-scroll-target="#read-the-data-into-r">Read the data into R</a></li>
+  <li><a href="#remove-columns" id="toc-remove-columns" class="nav-link" data-scroll-target="#remove-columns">Remove columns</a></li>
+  <li><a href="#change-column-names" id="toc-change-column-names" class="nav-link" data-scroll-target="#change-column-names">Change column names</a></li>
+  <li><a href="#make-language-be-a-factor" id="toc-make-language-be-a-factor" class="nav-link" data-scroll-target="#make-language-be-a-factor">Make <code>language</code> be a factor</a></li>
+  <li><a href="#reshape-the-data" id="toc-reshape-the-data" class="nav-link" data-scroll-target="#reshape-the-data">Reshape the data</a></li>
+  <li><a href="#remove-outliers" id="toc-remove-outliers" class="nav-link" data-scroll-target="#remove-outliers">Remove outliers</a></li>
+  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot">Plot</a></li>
+  <li><a href="#grouped-summaries" id="toc-grouped-summaries" class="nav-link" data-scroll-target="#grouped-summaries">Grouped summaries</a></li>
   </ul>
 </nav>
     </div>
@@ -204,7 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>In this section we do some exercises to practice. Each exercise has a solution that is hidden to start with: you can click on the <code>Show me how</code> button to reveal the solution, but I recommend that you try to solve each exercise yourself before looking at the solution. In each exercise I give some hints and some references to material in Hadley Wickham’s book – reading this material should help you identify, and understand, functions that you need to solve the exercise.</p>
+<p>In this section we do some exercises to practice. Each exercise has a solution that is hidden to start with: you can click on the <code>Show me how</code> button to reveal the solution, but I recommend that you try to solve each exercise yourself before looking at the solution. In each exercise I give some tips and some references to material in Hadley Wickham’s book – reading this material should help you identify, and understand, functions that you need to solve the exercise.</p>
 <section id="start-a-new-rproject" class="level2">
 <h2 class="anchored" data-anchor-id="start-a-new-rproject">Start a new Rproject</h2>
 <p>Whenever you start a piece of work in R, make a folder specially for that piece of work, and start an Rproject in that folder.</p>
@@ -215,9 +224,515 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </details>
 </div>
 </section>
-<section id="read-in-data" class="level2">
-<h2 class="anchored" data-anchor-id="read-in-data">Read in data</h2>
+<section id="download-the-data-as-a-spreadsheet" class="level2">
+<h2 class="anchored" data-anchor-id="download-the-data-as-a-spreadsheet">Download the data as a spreadsheet</h2>
 <p>Use the following link to download the data as a spreadsheet: <a href="docs/ldt_data.csv">ldt_data.csv</a>. Then move the spreadsheet into your project folder so R can see it.</p>
+</section>
+<section id="make-sure-you-have-the-tidyverse-loaded." class="level2">
+<h2 class="anchored" data-anchor-id="make-sure-you-have-the-tidyverse-loaded.">Make sure you have the <code>tidyverse</code> loaded.</h2>
+<p>Remember to load the <code>tidyverse</code> library at the start of each project.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tips
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>the function <code>library()</code> does this.</li>
+</ul>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Show me how
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="read-the-data-into-r" class="level2">
+<h2 class="anchored" data-anchor-id="read-the-data-into-r">Read the data into R</h2>
+<p>Now read the data into R.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tips
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>the function <code>read_csv</code>()` does this.</li>
+<li>Type <code>?read_csv()</code> - including that question mark at the beginning - to access R’s in-built help system for the <code>read_csv()</code> function. This works for any function name.</li>
+<li>Don’t forget to assign the result to a variable …</li>
+</ul>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Show me how
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"ldt_data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="remove-columns" class="level2">
+<h2 class="anchored" data-anchor-id="remove-columns">Remove columns</h2>
+<p>Have a look at the data, by typing its name into the console.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Show me how
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 100 × 7
+   id      age language rt_word rt_nonword acc_word acc_nonword
+   &lt;chr&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;
+ 1 S001     22        1    379.       517.       99          90
+ 2 S002     33        1    312.       435.       94          82
+ 3 S003     23        1    405.       459.       96          87
+ 4 S004     28        1    298.       336.       92          76
+ 5 S005     26        1    316.       401.       91          83
+ 6 S006     29        1    357.       367.       96          78
+ 7 S007     20        1    373.       435.       95          86
+ 8 S008     30        1    327.       425.       91          80
+ 9 S009     26        1    306.       455.       94          86
+10 S010     22        1    317.       414.       94          88
+# … with 90 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>We want to keep these columns:</p>
+<ul>
+<li>id</li>
+<li>age</li>
+<li>language</li>
+<li>rt_word</li>
+<li>rt_nonword</li>
+</ul>
+<p>We want to remove the columns that code for accuracy</p>
+<ul>
+<li>acc_word</li>
+<li>acc_nonword</li>
+</ul>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tips
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>The function you need is <code>select()</code></li>
+<li>You can make a list of column names using <code>c(name, name, name, ...)</code></li>
+</ul>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Show me how
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># selecting columns positively</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">c</span>(id, age, language, rt_word, rt_nonword))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or eqivalently, selecting columns negatively</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># notice the minus sign in front of c</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(acc_word, acc_nonword))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="change-column-names" class="level2">
+<h2 class="anchored" data-anchor-id="change-column-names">Change column names</h2>
+<p>Now that we only have RT in the data, let’s remove the “rt_” part of the column names, by changing the column names</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tips
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>The function you need is <code>rename</code>()`</li>
+</ul>
+</div>
+</div>
+<p>::: {.callout-tip collapse=“true”} ## Show me how</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># selecting columns positively</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">word =</span> rt_word, <span class="at">nonword =</span> rt_nonword)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="make-language-be-a-factor" class="level2">
+<h2 class="anchored" data-anchor-id="make-language-be-a-factor">Make <code>language</code> be a factor</h2>
+<p>At the moment, <code>language</code> has two possible numeric values, <code>1</code> and <code>2</code>. <code>1</code> means <code>monolingual</code>; <code>2</code> means <code>bilingual</code>. This variable is really a factor representing how many languages a person speaks, with two levels, ‘monolingual’ and ‘bilingual’. If a variable is naturally a factor, R confers advantages on us later in the analysis pipe-line if we transform it from numeric type to factor type. So let’s do that.</p>
+<p>This is a bit tricky because you need to nest two function calls.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tips
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>The main function you need is <code>mutate()</code></li>
+<li>The nested function you need is <code>factor()</code></li>
+<li><code>factor()</code> needs two arguments passed: <code>levels</code> and <code>labels</code></li>
+</ul>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Show me how
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">language =</span> <span class="fu">factor</span>(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>      language,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="co"># what the possible numeric values are</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels=</span><span class="fu">c</span>(<span class="st">'monolingual'</span>, <span class="st">'bilingual'</span>) <span class="co"># what those numeric values really mean</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="reshape-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="reshape-the-data">Reshape the data</h2>
+<p>Reshape the data from “wide” (SPSS-style, with each condition’s data in its own column) to “long” (R-style, with a single column for the data itself, and additional coluns coding for condition / conditions)</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tips
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>You need the function <code>pivot_longer()</code></li>
+</ul>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Show me how
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols=</span><span class="fu">c</span>(word, nonword),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to=</span><span class="st">"condition"</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"RT"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="remove-outliers" class="level2">
+<h2 class="anchored" data-anchor-id="remove-outliers">Remove outliers</h2>
+<p>Outliers are very long reaction times. We want to remove those because they probably don’t give us information about the cognitive process we are trying to study (i.e., word recognition).</p>
+<p>Let’s see what the RTs look like: Let’s say that RTs greater than 600 are outliers.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="exercises_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Since we say that RTs greater than 600 are outliers, let’s remove those.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tips
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>The function you need is <code>filter()</code></li>
+</ul>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Show me how
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span> <span class="fu">filter</span>(RT <span class="sc">&lt;</span> <span class="dv">600</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># check the new maximum for RT</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      id                 age               language    condition        
+ Length:180         Min.   :18.00   monolingual:110   Length:180        
+ Class :character   1st Qu.:24.00   bilingual  : 70   Class :character  
+ Mode  :character   Median :28.00                     Mode  :character  
+                    Mean   :29.29                                       
+                    3rd Qu.:33.00                                       
+                    Max.   :58.00                                       
+       RT       
+ Min.   :256.3  
+ 1st Qu.:346.4  
+ Median :395.1  
+ Mean   :411.2  
+ 3rd Qu.:462.1  
+ Max.   :598.4  </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot" class="level2">
+<h2 class="anchored" data-anchor-id="plot">Plot</h2>
+<p>Make a violin plot like this to show how the RTs vary across conditions.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="exercises_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tips
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>You need the function <code>ggplot()</code></li>
+</ul>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Show me how
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">y=</span>RT, <span class="at">x=</span>language, <span class="at">fill=</span>condition)) <span class="sc">+</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>()</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># See that the thing that takes longest is for bilinguals to identify non-words ...</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Might this be because they check in two languages to see if a word is legitimate,</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># whereas monolinguals only check one language?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="grouped-summaries" class="level2">
+<h2 class="anchored" data-anchor-id="grouped-summaries">Grouped summaries</h2>
+<p>We want a summary of the data, abstracting over individual participants to give the condition means.</p>
+<p>At this point we have two variables each with 2 levels:</p>
+<ul>
+<li>language (monolingual, bilingual)</li>
+<li>condition (word, nonword)</li>
+</ul>
+<p>So we should have 2*2=4 cell means, like this:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">language</th>
+<th style="text-align: left;">condition</th>
+<th style="text-align: right;">meanRT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">monolingual</td>
+<td style="text-align: left;">nonword</td>
+<td style="text-align: right;">447.7275</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">monolingual</td>
+<td style="text-align: left;">word</td>
+<td style="text-align: right;">358.1143</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">bilingual</td>
+<td style="text-align: left;">nonword</td>
+<td style="text-align: right;">561.1946</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bilingual</td>
+<td style="text-align: left;">word</td>
+<td style="text-align: right;">348.1346</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tips
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>you need <code>group_by()</code> and <code>summarise()</code></li>
+<li><code>kable()</code> gives a nice table layout</li>
+</ul>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Show me how
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(language, condition) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">meanRT =</span> <span class="fu">mean</span>(RT))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">language</th>
+<th style="text-align: left;">condition</th>
+<th style="text-align: right;">meanRT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">monolingual</td>
+<td style="text-align: left;">nonword</td>
+<td style="text-align: right;">447.7275</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">monolingual</td>
+<td style="text-align: left;">word</td>
+<td style="text-align: right;">358.1143</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">bilingual</td>
+<td style="text-align: left;">nonword</td>
+<td style="text-align: right;">561.1946</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bilingual</td>
+<td style="text-align: left;">word</td>
+<td style="text-align: right;">348.1346</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
 </section>

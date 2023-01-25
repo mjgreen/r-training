@@ -1,6 +1,6 @@
 # Exercises {.unnumbered}
 
-In this section we do some exercises to practice. Each exercise has a solution that is hidden to start with: you can click on the `Show me how` button to reveal the solution, but I recommend that you try to solve each exercise yourself before looking at the solution. In each exercise I give some hints and some references to material in Hadley Wickham's book -- reading this material should help you identify, and understand, functions that you need to solve the exercise.
+In this section we do some exercises to practice. Each exercise has a solution that is hidden to start with: you can click on the `Show me how` button to reveal the solution, but I recommend that you try to solve each exercise yourself before looking at the solution. In each exercise I give some tips and some references to material in Hadley Wickham's book -- reading this material should help you identify, and understand, functions that you need to solve the exercise.
 
 ## Start a new Rproject
 
@@ -12,8 +12,247 @@ Whenever you start a piece of work in R, make a folder specially for that piece 
 # In the top-right where it says "Project: (None)" use the dropdown to do "New Project", and follow the prompts
 ```
 
-
-## Read in data
+## Download the data as a spreadsheet
 
 Use the following link to download the data as a spreadsheet: [ldt_data.csv](docs/ldt_data.csv). Then move the spreadsheet into your project folder so R can see it.
+
+## Make sure you have the `tidyverse` loaded.
+
+Remember to load the `tidyverse` library at the start of each project.
+
+::: {.callout-note}
+## Tips
+* the function `library()` does this.
+:::
+
+::: {.callout-tip collapse="true"}
+## Show me how
+```{r, message=FALSE}
+library(tidyverse)
+```
+:::
+
+## Read the data into R
+
+Now read the data into R.
+
+::: {.callout-note}
+## Tips
+* the function `read_csv`()` does this.
+* Type `?read_csv()` - including that question mark at the beginning - to access R's in-built help system for the `read_csv()` function. This works for any function name.
+* Don't forget to assign the result to a variable ...
+:::
+
+::: {.callout-tip collapse="true"}
+## Show me how
+```{r, message=FALSE}
+dat <- read_csv(file = "ldt_data.csv")
+```
+:::
+
+## Remove columns
+
+Have a look at the data, by typing its name into the console.
+
+::: {.callout-tip collapse="true"}
+## Show me how
+```{r}
+dat
+```
+:::
+
+
+We want to keep these columns:
+
+* id
+* age
+* language
+* rt_word
+* rt_nonword
+
+We want to remove the columns that code for accuracy
+
+* acc_word
+* acc_nonword
+
+
+::: {.callout-note}
+## Tips
+* The function you need is `select()`
+* You can make a list of column names using `c(name, name, name, ...)`
+:::
+  
+::: {.callout-tip collapse="true"}
+## Show me how
+```{r, message=FALSE}
+# selecting columns positively
+dat <- dat %>% select(c(id, age, language, rt_word, rt_nonword))
+```
+
+```{r, message=FALSE, eval=FALSE}
+# or eqivalently, selecting columns negatively
+# notice the minus sign in front of c
+dat <- dat %>% select(-c(acc_word, acc_nonword))
+```
+:::
+
+## Change column names
+
+Now that we only have RT in the data, let's remove the "rt_" part of the column names, by changing the column names
+
+::: {.callout-note}
+## Tips
+* The function you need is `rename`()`
+:::
+  
+::: {.callout-tip collapse="true"}
+## Show me how
+```{r, message=FALSE}
+# selecting columns positively
+dat <- dat %>% rename(word = rt_word, nonword = rt_nonword)
+```
+
+
+
+## Make `language` be a factor
+
+At the moment, `language` has two possible numeric values, `1` and `2`. `1` means `monolingual`; `2` means `bilingual`. This variable is really a factor representing how many languages a person speaks, with two levels, 'monolingual' and 'bilingual'. If a variable is naturally a factor, R confers advantages on us later in the analysis pipe-line if we transform it from numeric type to factor type. So let's do that.
+
+This is a bit tricky because you need to nest two function calls.
+
+::: {.callout-note}
+## Tips
+* The main function you need is `mutate()`
+* The nested function you need is `factor()`
+* `factor()` needs two arguments passed: `levels` and `labels`
+:::
+  
+::: {.callout-tip collapse="true"}
+## Show me how
+```{r, message=FALSE}
+dat <- dat %>% 
+  mutate(
+    language = factor(
+      language,
+      levels=c(1,2), # what the possible numeric values are
+      labels=c('monolingual', 'bilingual') # what those numeric values really mean
+    )
+  )
+```
+:::
+
+## Reshape the data 
+
+Reshape the data from "wide" (SPSS-style, with each condition's data in its own column) to "long" (R-style, with a single column for the data itself, and additional coluns coding for condition / conditions)
+
+::: {.callout-note}
+## Tips
+* You need the function `pivot_longer()`
+:::
+  
+::: {.callout-tip collapse="true"}
+## Show me how
+```{r, message=FALSE}
+dat <- dat %>% 
+  pivot_longer(
+    cols=c(word, nonword),
+    names_to="condition",
+    values_to = "RT"
+  )
+```
+:::
+
+## Remove outliers
+
+Outliers are very long reaction times. We want to remove those because they probably don't give us information about the cognitive process we are trying to study (i.e., word recognition).
+
+Let's see what the RTs look like: Let's say that RTs greater than 600 are outliers.
+
+```{r, echo=F}
+temp=dat
+temp$status=ifelse(temp$RT<600,"ok","outlier")
+ggplot(temp, aes(y=RT, x=seq_along(RT), color=status)) + geom_point(cex=2) +scale_color_manual(values=c("blue","red"))+theme_bw()
+```
+
+Since we say that RTs greater than 600 are outliers, let's remove those.
+
+::: {.callout-note}
+## Tips
+* The function you need is `filter()`
+:::
+  
+::: {.callout-tip collapse="true"}
+## Show me how
+```{r, message=FALSE}
+dat <- dat %>% filter(RT < 600)
+# check the new maximum for RT
+summary(dat)
+```
+:::
+
+## Plot
+
+Make a violin plot like this to show how the RTs vary across conditions.
+
+```{r, echo=FALSE}
+ggplot(dat, aes(y=RT, x=language, fill=condition)) + 
+  geom_violin()
+```
+
+
+::: {.callout-note}
+## Tips
+* You need the function `ggplot()`
+:::
+  
+::: {.callout-tip collapse="true"}
+## Show me how
+```{r, message=FALSE, echo=TRUE, eval=FALSE}
+ggplot(dat, aes(y=RT, x=language, fill=condition)) + 
+  geom_violin()
+
+# See that the thing that takes longest is for bilinguals to identify non-words ...
+
+# Might this be because they check in two languages to see if a word is legitimate,
+# whereas monolinguals only check one language?
+```
+:::
+
+## Grouped summaries
+
+We want a summary of the data, abstracting over individual participants to give the condition means.
+
+At this point we have two variables each with 2 levels:
+
+* language (monolingual, bilingual)
+* condition (word, nonword)
+
+So we should have 2*2=4 cell means, like this:
+
+```{r, echo=FALSE, message=FALSE}
+foo <- dat %>% 
+  group_by(language, condition) %>% 
+  summarise(meanRT = mean(RT))
+
+knitr::kable(foo)
+```
+
+
+::: {.callout-note}
+## Tips
+* you need `group_by()` and `summarise()`
+* `kable()` gives a nice table layout
+:::
+  
+::: {.callout-tip collapse="true"}
+## Show me how
+```{r, message=FALSE}
+dat <- dat %>% 
+  group_by(language, condition) %>% 
+  summarise(meanRT = mean(RT))
+
+knitr::kable(dat)
+```
+:::
+
 

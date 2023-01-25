@@ -47,5 +47,82 @@
     "title": "Exercises",
     "section": "Start a new Rproject",
     "text": "Start a new Rproject\nWhenever you start a piece of work in R, make a folder specially for that piece of work, and start an Rproject in that folder.\n\n\nShow me how\n# In the top-right where it says \"Project: (None)\" use the dropdown to do \"New Project\", and follow the prompts"
+  },
+  {
+    "objectID": "exercises.html#download-the-data-as-a-spreadsheet",
+    "href": "exercises.html#download-the-data-as-a-spreadsheet",
+    "title": "Exercises",
+    "section": "Download the data as a spreadsheet",
+    "text": "Download the data as a spreadsheet\nUse the following link to download the data as a spreadsheet: ldt_data.csv. Then move the spreadsheet into your project folder so R can see it."
+  },
+  {
+    "objectID": "exercises.html#read-the-data-into-r",
+    "href": "exercises.html#read-the-data-into-r",
+    "title": "Exercises",
+    "section": "Read the data into R",
+    "text": "Read the data into R\nNow read the data into R.\n\n\n\n\n\n\nTips\n\n\n\n\nthe function read_csv()` does this.\nType ?read_csv() - including that question mark at the beginning - to access R’s in-built help system for the read_csv() function. This works for any function name.\nDon’t forget to assign the result to a variable …\n\n\n\n\n\n\n\n\n\nShow me how\n\n\n\n\n\n\ndat <- read_csv(file = \"ldt_data.csv\")"
+  },
+  {
+    "objectID": "exercises.html#make-sure-you-have-the-tidyverse-loaded.",
+    "href": "exercises.html#make-sure-you-have-the-tidyverse-loaded.",
+    "title": "Exercises",
+    "section": "Make sure you have the tidyverse loaded.",
+    "text": "Make sure you have the tidyverse loaded.\nRemember to load the tidyverse library at the start of each project.\n\n\n\n\n\n\nTips\n\n\n\n\nthe function library() does this.\n\n\n\n\n\n\n\n\n\nShow me how\n\n\n\n\n\n\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "exercises.html#edit-the-data-1",
+    "href": "exercises.html#edit-the-data-1",
+    "title": "Exercises",
+    "section": "Edit the data (1)",
+    "text": "Edit the data (1)\nHave a look at the data, by typing its name into the console.\n\n\n\n\n\n\nShow me how\n\n\n\n\n\n\ndat\n\n# A tibble: 100 × 7\n   id      age language rt_word rt_nonword acc_word acc_nonword\n   <chr> <dbl>    <dbl>   <dbl>      <dbl>    <dbl>       <dbl>\n 1 S001     22        1    379.       517.       99          90\n 2 S002     33        1    312.       435.       94          82\n 3 S003     23        1    405.       459.       96          87\n 4 S004     28        1    298.       336.       92          76\n 5 S005     26        1    316.       401.       91          83\n 6 S006     29        1    357.       367.       96          78\n 7 S007     20        1    373.       435.       95          86\n 8 S008     30        1    327.       425.       91          80\n 9 S009     26        1    306.       455.       94          86\n10 S010     22        1    317.       414.       94          88\n# … with 90 more rows"
+  },
+  {
+    "objectID": "exercises.html#remove-outliers",
+    "href": "exercises.html#remove-outliers",
+    "title": "Exercises",
+    "section": "Remove outliers",
+    "text": "Remove outliers\nOutliers are very long reaction times. We want to remove those because they probably don’t give us information about the cognitive process we are trying to study (i.e., word recognition).\nLet’s see what the RTs look like: Let’s say that RTs greater than 600 are outliers.\n\n\n\n\n\nSince we say that RTs greater than 600 are outliers, let’s remove those.\n\n\n\n\n\n\nTips\n\n\n\n\nThe function you need is filter()\n\n\n\n\n\n\n\n\n\nShow me how\n\n\n\n\n\n\ndat <- dat %>% filter(RT < 600)\n# check the new maximum for RT\nsummary(dat)\n\n      id                 age               language    condition        \n Length:180         Min.   :18.00   monolingual:110   Length:180        \n Class :character   1st Qu.:24.00   bilingual  : 70   Class :character  \n Mode  :character   Median :28.00                     Mode  :character  \n                    Mean   :29.29                                       \n                    3rd Qu.:33.00                                       \n                    Max.   :58.00                                       \n       RT       \n Min.   :256.3  \n 1st Qu.:346.4  \n Median :395.1  \n Mean   :411.2  \n 3rd Qu.:462.1  \n Max.   :598.4"
+  },
+  {
+    "objectID": "exercises.html#remove-columns",
+    "href": "exercises.html#remove-columns",
+    "title": "Exercises",
+    "section": "Remove columns",
+    "text": "Remove columns\nHave a look at the data, by typing its name into the console.\n\n\n\n\n\n\nShow me how\n\n\n\n\n\n\ndat\n\n# A tibble: 100 × 7\n   id      age language rt_word rt_nonword acc_word acc_nonword\n   <chr> <dbl>    <dbl>   <dbl>      <dbl>    <dbl>       <dbl>\n 1 S001     22        1    379.       517.       99          90\n 2 S002     33        1    312.       435.       94          82\n 3 S003     23        1    405.       459.       96          87\n 4 S004     28        1    298.       336.       92          76\n 5 S005     26        1    316.       401.       91          83\n 6 S006     29        1    357.       367.       96          78\n 7 S007     20        1    373.       435.       95          86\n 8 S008     30        1    327.       425.       91          80\n 9 S009     26        1    306.       455.       94          86\n10 S010     22        1    317.       414.       94          88\n# … with 90 more rows\n\n\n\n\n\nWe want to keep these columns:\n\nid\nage\nlanguage\nrt_word\nrt_nonword\n\nWe want to remove the columns that code for accuracy\n\nacc_word\nacc_nonword\n\n\n\n\n\n\n\nTips\n\n\n\n\nThe function you need is select()\nYou can make a list of column names using c(name, name, name, ...)\n\n\n\n\n\n\n\n\n\nShow me how\n\n\n\n\n\n\n# selecting columns positively\ndat <- dat %>% select(c(id, age, language, rt_word, rt_nonword))\n\n\n# or eqivalently, selecting columns negatively\n# notice the minus sign in front of c\ndat <- dat %>% select(-c(acc_word, acc_nonword))"
+  },
+  {
+    "objectID": "exercises.html#make-language-be-a-factor",
+    "href": "exercises.html#make-language-be-a-factor",
+    "title": "Exercises",
+    "section": "Make language be a factor",
+    "text": "Make language be a factor\nAt the moment, language has two possible numeric values, 1 and 2. 1 means monolingual; 2 means bilingual. This variable is really a factor representing how many languages a person speaks, with two levels, ‘monolingual’ and ‘bilingual’. If a variable is naturally a factor, R confers advantages on us later in the analysis pipe-line if we transform it from numeric type to factor type. So let’s do that.\nThis is a bit tricky because you need to nest two function calls.\n\n\n\n\n\n\nTips\n\n\n\n\nThe main function you need is mutate()\nThe nested function you need is factor()\nfactor() needs two arguments passed: levels and labels\n\n\n\n\n\n\n\n\n\nShow me how\n\n\n\n\n\n\ndat <- dat %>% \n  mutate(\n    language = factor(\n      language,\n      levels=c(1,2), # what the possible numeric values are\n      labels=c('monolingual', 'bilingual') # what those numeric values really mean\n    )\n  )"
+  },
+  {
+    "objectID": "exercises.html#change-column-names",
+    "href": "exercises.html#change-column-names",
+    "title": "Exercises",
+    "section": "Change column names",
+    "text": "Change column names\nNow that we only have RT in the data, let’s remove the “rt_” part of the column names, by changing the column names\n\n\n\n\n\n\nTips\n\n\n\n\nThe function you need is rename()`\n\n\n\n::: {.callout-tip collapse=“true”} ## Show me how\n\n# selecting columns positively\ndat <- dat %>% rename(word = rt_word, nonword = rt_nonword)"
+  },
+  {
+    "objectID": "exercises.html#reshape-the-data",
+    "href": "exercises.html#reshape-the-data",
+    "title": "Exercises",
+    "section": "Reshape the data",
+    "text": "Reshape the data\nReshape the data from “wide” (SPSS-style, with each condition’s data in its own column) to “long” (R-style, with a single column for the data itself, and additional coluns coding for condition / conditions)\n\n\n\n\n\n\nTips\n\n\n\n\nYou need the function pivot_longer()\n\n\n\n\n\n\n\n\n\nShow me how\n\n\n\n\n\n\ndat <- dat %>% \n  pivot_longer(\n    cols=c(word, nonword),\n    names_to=\"condition\",\n    values_to = \"RT\"\n  )"
+  },
+  {
+    "objectID": "exercises.html#grouped-summaries",
+    "href": "exercises.html#grouped-summaries",
+    "title": "Exercises",
+    "section": "Grouped summaries",
+    "text": "Grouped summaries\nWe want a summary of the data, abstracting over individual participants to give the condition means.\nAt this point we have two variables each with 2 levels:\n\nlanguage (monolingual, bilingual)\ncondition (word, nonword)\n\nSo we should have 2*2=4 cell means, like this:\n\n\n\n\n\nlanguage\ncondition\nmeanRT\n\n\n\n\nmonolingual\nnonword\n447.7275\n\n\nmonolingual\nword\n358.1143\n\n\nbilingual\nnonword\n561.1946\n\n\nbilingual\nword\n348.1346\n\n\n\n\n\n\n\n\n\n\n\nTips\n\n\n\n\nyou need group_by() and summarise()\nkable() gives a nice table layout\n\n\n\n\n\n\n\n\n\nShow me how\n\n\n\n\n\n\ndat <- dat %>% \n  group_by(language, condition) %>% \n  summarise(meanRT = mean(RT))\n\nknitr::kable(dat)\n\n\n\n\nlanguage\ncondition\nmeanRT\n\n\n\n\nmonolingual\nnonword\n447.7275\n\n\nmonolingual\nword\n358.1143\n\n\nbilingual\nnonword\n561.1946\n\n\nbilingual\nword\n348.1346"
+  },
+  {
+    "objectID": "exercises.html#plot",
+    "href": "exercises.html#plot",
+    "title": "Exercises",
+    "section": "Plot",
+    "text": "Plot\nMake a violin plot like this to show how the RTs vary across conditions.\n\n\n\n\n\n\n\n\n\n\n\nTips\n\n\n\n\nYou need the function ggplot()\n\n\n\n\n\n\n\n\n\nShow me how\n\n\n\n\n\n\nggplot(dat, aes(y=RT, x=language, fill=condition)) + \n  geom_violin()\n\n# See that the thing that takes longest is for bilinguals to identify non-words ...\n\n# Might this be because they check in two languages to see if a word is legitimate,\n# whereas monolinguals only check one language?"
   }
 ]

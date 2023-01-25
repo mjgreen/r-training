@@ -1,0 +1,11 @@
+::: {.callout-note}
+## Tips
+* 
+:::
+  
+::: {.callout-tip collapse="true"}
+## Show me how
+```{r, message=FALSE}
+
+```
+:::
