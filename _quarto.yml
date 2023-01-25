@@ -18,3 +18,5 @@ format:
       light: cosmo
       dark: [cosmo, theme-dark.scss]
 
+callout-appearance: default
+callout-collapse: true

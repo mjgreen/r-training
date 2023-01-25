@@ -1,16 +1,20 @@
 # Exercises {.unnumbered}
 
-In this section we do some exercises to practice. Each exercise has a solution that is hidden to start with: you can click on the `Show me how` button to reveal the solution, but I recommend that you try to solve each exercise yourself before looking at the solution. In each exercise I give some tips and some references to material in Hadley Wickham's book -- reading this material should help you identify, and understand, functions that you need to solve the exercise.
+## Introduction
+
+In this section we do some exercises to practice. Each exercise has a solution that is hidden to start with: you can click on the `Show me how` button to reveal the solution, but I recommend that you try to solve each exercise yourself before looking at the solution. Use the `Tips` to help you. Google things. Search for the functions in Hadley Wickham's book at [this link](https://r4ds.had.co.nz/).
+
+These exercises are pretty difficult challenges if R is your first programming language, so don't be embarrassed to ask me for help. Seeing the solution might not be enough, and I am happy to explain to you how the solution does what it does - ask me in class, or come to the R-focussed stats help desk in P104, 1100h to 1400h on Tuesdays in Semester 2 (Winter 2023).
+
 
 ## Start a new Rproject
 
 Whenever you start a piece of work in R, make a folder specially for that piece of work, and start an Rproject in that folder.
 
-```{r}
-#| code-fold: true
-#| code-summary: "Show me how"
-# In the top-right where it says "Project: (None)" use the dropdown to do "New Project", and follow the prompts
-```
+::: {.callout-tip collapse="true"}
+## Show me how
+In the top-right where it says "Project: (None)" use the dropdown to do "New Project", and follow the prompts
+:::
 
 ## Download the data as a spreadsheet
 
@@ -64,16 +68,16 @@ dat
 
 We want to keep these columns:
 
-* id
-* age
-* language
-* rt_word
-* rt_nonword
+* `id`
+* `age`
+* `language`
+* `rt_word`
+* `rt_nonword`
 
 We want to remove the columns that code for accuracy
 
-* acc_word
-* acc_nonword
+* `acc_word`
+* `acc_nonword`
 
 
 ::: {.callout-note}
@@ -85,8 +89,11 @@ We want to remove the columns that code for accuracy
 ::: {.callout-tip collapse="true"}
 ## Show me how
 ```{r, message=FALSE}
-# selecting columns positively
+# any columns you don't select will be left out
 dat <- dat %>% select(c(id, age, language, rt_word, rt_nonword))
+
+# check that it worked
+dat
 ```
 
 ```{r, message=FALSE, eval=FALSE}
@@ -108,10 +115,16 @@ Now that we only have RT in the data, let's remove the "rt_" part of the column 
 ::: {.callout-tip collapse="true"}
 ## Show me how
 ```{r, message=FALSE}
-# selecting columns positively
-dat <- dat %>% rename(word = rt_word, nonword = rt_nonword)
-```
+dat <- dat %>% 
+  rename(
+    word = rt_word, 
+    nonword = rt_nonword
+    )
 
+# check that it worked
+dat
+```
+:::
 
 
 ## Make `language` be a factor
@@ -138,6 +151,9 @@ dat <- dat %>%
       labels=c('monolingual', 'bilingual') # what those numeric values really mean
     )
   )
+
+# check that it worked
+dat
 ```
 :::
 
@@ -159,6 +175,9 @@ dat <- dat %>%
     names_to="condition",
     values_to = "RT"
   )
+
+# check that it worked
+dat
 ```
 :::
 
@@ -185,6 +204,7 @@ Since we say that RTs greater than 600 are outliers, let's remove those.
 ## Show me how
 ```{r, message=FALSE}
 dat <- dat %>% filter(RT < 600)
+
 # check the new maximum for RT
 summary(dat)
 ```
@@ -224,8 +244,8 @@ We want a summary of the data, abstracting over individual participants to give 
 
 At this point we have two variables each with 2 levels:
 
-* language (monolingual, bilingual)
-* condition (word, nonword)
+* `language` (monolingual, bilingual)
+* `condition` (word, nonword)
 
 So we should have 2*2=4 cell means, like this:
 
@@ -241,7 +261,7 @@ knitr::kable(foo)
 ::: {.callout-note}
 ## Tips
 * you need `group_by()` and `summarise()`
-* `kable()` gives a nice table layout
+* `knitr::kable()` gives a nice table layout
 :::
   
 ::: {.callout-tip collapse="true"}
@@ -250,6 +270,12 @@ knitr::kable(foo)
 dat <- dat %>% 
   group_by(language, condition) %>% 
   summarise(meanRT = mean(RT))
+
+# Let's make condition be a factor
+dat$condition <- as_factor(dat$condition)
+
+# check that it worked
+dat
 
 knitr::kable(dat)
 ```
