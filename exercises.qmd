@@ -18,7 +18,7 @@ In the top-right where it says "Project: (None)" use the dropdown to do "New Pro
 
 ## Download the data as a spreadsheet
 
-Use the following link to download the data as a spreadsheet: [ldt_data.csv](docs/ldt_data.csv). Then move the spreadsheet into your project folder so R can see it.
+Use the following link to download the data as a spreadsheet: [ldt_data.csv](ldt_data.csv). Then move the spreadsheet into your project folder so R can see it.
 
 ## Make sure you have the `tidyverse` loaded.
 
